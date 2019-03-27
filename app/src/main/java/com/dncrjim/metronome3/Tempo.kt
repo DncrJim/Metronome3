@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "tempoList")
 data class Tempo (
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val tempo: Int,
-    val frequency: Int
+    val id: Int = 0,
+    val tempo: Int? = null,
+    val frequency: Int? = null
 )

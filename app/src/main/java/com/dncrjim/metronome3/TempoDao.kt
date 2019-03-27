@@ -9,19 +9,19 @@ import androidx.room.Query
 @Dao
 interface TempoDao {
 
-    @Query("SELECT * from tempoList")
-    fun getAll(): List<Tempo>
-
-    @Query("DELETE FROM tempoList")
-    fun deleteAllTempos()
-
-
-    @Query("select * from tempoList where id = :id")
-    fun getTempoById(id: Int): Tempo
-
-    @Query("DELETE from tempoList where id = :id")
-    fun deleteTempoById(id: Int): Tempo
-
+//    @Query("SELECT * from tempoList")
+//    fun getAll(): List<Tempo>
+//
+//    @Query("DELETE FROM tempoList")
+//    fun deleteAllTempos()
+//
+//
+//    @Query("select * from tempoList where id = :id")
+//    fun getTempoById(id: Int): Tempo
+//
+//    @Query("DELETE from tempoList where id = :id")
+//    fun deleteTempoById(id: Int): Tempo
+//
     // this may have an issue if a tempo from the middle is deleted
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTempo(tempo: Tempo)

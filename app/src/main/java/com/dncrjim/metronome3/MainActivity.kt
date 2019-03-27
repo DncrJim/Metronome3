@@ -7,9 +7,14 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+
 class MainActivity : AppCompatActivity() {
+
+    lateinit var db: TempoDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         var tempoAsInt: Int = intent.getIntExtra("currentTempo", 0)
 
+        //build database
+        //Todo: Trade these after testing
+        db = Room.inMemoryDatabaseBuilder(this, TempoDatabase::class.java).allowMainThreadQueries().build()
+        //db = Room.databaseBuilder(this, TempoDatabase::class.java, "TempoDatabase").build()
 
         //onClick for new tempo
         newTempoButton.setOnClickListener {
