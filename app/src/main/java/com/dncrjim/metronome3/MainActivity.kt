@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,7 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //init recycler view
+
+
+
+
+        //Init variable for current tempo
         var tempoAsInt: Int = intent.getIntExtra("currentTempo", 0)
+
+
 
         //build database
         //Todo: Trade these after testing
@@ -46,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     else -> {
 
                         //Todo: Unmark this to insert tempo into database
-                        //db.tempoDao().insertTempo(Tempo(nextId(), tempoAsInt, 0))
+                        db.tempoDao().insertTempo(Tempo(nextId(), tempoAsInt, 0))
 
                         //move to other activity and send new tempo
                         val intent = Intent(this, TempoActivity::class.java)
@@ -61,15 +71,6 @@ class MainActivity : AppCompatActivity() {
         val b = dialogBuilder.create()
         b.show()
         }
-
-
-
-
-
-
-
-
-
 
         //onClick for last tempo
         //Set GONE if no value for 'last tempo'
@@ -86,6 +87,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+    }
+
+    private fun nextId(): Int {
+            return db.tempoDao().getAllTempos().size + 1
 
     }
 }

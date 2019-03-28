@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Metronome3</string>
+    <string name="app_name">Metronome</string>
     <string name="new_tempo">New Tempo</string>
     <string name="go_to_last_tempo">Go to Last Tempo</string>
     <string name="return_to_tempo_selection">Return to Tempo Selection</string>
