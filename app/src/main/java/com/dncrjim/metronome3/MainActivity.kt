@@ -23,8 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        //build database
-        //Todo: Remove .allowMainThreadQueries()
+        // build database
+        // I know I'm not supposed to use MainThreadQueries, but the information is necessary immediately after it in the runtime to populate the new Activity Window.
+        // I'm sure there's a way to make it wait for that data, but I could not find it in the time allotted...
         db = Room.databaseBuilder(this, TempoDatabase::class.java, "TempoDatabase").allowMainThreadQueries().build()
 
         thread {
@@ -95,8 +96,8 @@ class MainActivity : AppCompatActivity() {
                             val tempoId = if (exists != 0) {
 
                                 //Update if existing tempo
-                                val OldTempo = db.tempoDao().getIDbytempo(tempoAsInt)
-                                OldTempo.id!!
+                                val oldTempo = db.tempoDao().getIDbytempo(tempoAsInt)
+                                oldTempo.id!!
                             } else {
 
                                 //Create new if not existing tempo
