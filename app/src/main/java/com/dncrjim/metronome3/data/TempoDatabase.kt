@@ -1,4 +1,4 @@
-package com.dncrjim.metronome3
+package com.dncrjim.metronome3.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

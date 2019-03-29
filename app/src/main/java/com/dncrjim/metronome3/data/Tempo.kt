@@ -1,4 +1,4 @@
-package com.dncrjim.metronome3
+package com.dncrjim.metronome3.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "tempoList")
 data class Tempo (
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val tempo: Int? = null,
-    val frequency: Int? = null
+    val id: Int?,
+    val tempo: Int,
+    val frequency: Int
 )
